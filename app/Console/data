@@ -1,0 +1,21 @@
+CREATE TABLE Laptops (
+    LaptopID INT PRIMARY KEY,
+    Brand VARCHAR(50),
+    Model VARCHAR(50),
+    Price DECIMAL(10, 2),
+    Description TEXT,
+    ImageURL VARCHAR(255)
+);
+
+INSERT INTO Laptops (Brand, Model, Price, Description, ImageURL)
+VALUES
+(1, 'Apple', 'MacBook Pro 16-inch (2021)', 2399.99, 'Powerful MacBook with M1 Pro or M1 Max processor and stunning Retina XDR display.', 'macbook_pro_16_inch_2021.jpg'),
+(2, 'Dell', 'XPS 13 (2021)', 1299.99, 'Premium Windows laptop with InfinityEdge display and high performance.', 'dell_xps_13_2021.jpg'),
+(3, 'Asus', 'ROG Zephyrus G14', 1499.99, 'Gaming laptop featuring AMD Ryzen 9 5900HS processor, Nvidia RTX 3060 GPU, and QHD display.', 'asus_rog_zephyrus_g14.jpg'),
+(4, 'Apple', 'MacBook Air (M2, 2022)', 999.99, 'Lightweight MacBook with M2 processor, Retina display, and sleek design.', 'macbook_air_m2_2022.jpg'),
+(5, 'HP', 'Spectre x360 (2021)', 1399.99, '2-in-1 laptop with OLED display, high performance, and premium design.', 'hp_spectre_x360_2021.jpg'),
+(6, 'Lenovo', 'ThinkPad X1 Carbon (9th Gen)', 1699.99, 'Lightweight business laptop with legendary ThinkPad keyboard and 4K display.', 'lenovo_thinkpad_x1_carbon_9th_gen.jpg'),
+(7, 'Razer', 'Blade 17 (2021)', 2899.99, 'Gaming laptop with Intel Core i9 processor, Nvidia RTX 3080 GPU, and 360Hz display.', 'razer_blade_17_2021.jpg'),
+(8, 'Microsoft', 'Surface Laptop 4', 1299.99, 'Premium Windows laptop with PixelSense display and powerful configuration options.', 'microsoft_surface_laptop_4.jpg'),
+(9, 'Acer', 'Swift 3', 699.99, 'Affordable Windows laptop with good performance and lightweight design.', 'acer_swift_3.jpg'),
+(10, 'LG', 'Gram 17 (2021)', 1599.99, 'Ultra-light laptop with a large 17-inch display and long-lasting battery.', 'lg_gram_17_2021.jpg');
