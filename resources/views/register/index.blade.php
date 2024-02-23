@@ -65,37 +65,28 @@
     
     <div class="container">
         <div class="row justify-content-center">
-          <main class="form-signin col-md-4">
+        <main class="form-signin w-100 m-auto">
+                <!-- Formulir Register -->
+            <form action="{{ route('Register.store') }}" method="POST">
+            @csrf
+            <h1 class="h3 mb-3 fw-normal">Register</h1>
 
-            <form action="/register" method="post">
-              @csrf
-              <h1 class="h3 mb-3 fw-normal">Please Sign in</h1>
-              <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Name</label>
-              </div>
-              <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingNama" name="name" placeholder="Nama"> <!-- Ubah name menjadi 'name' -->
+                <label for="floatingNama">Nama</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
-              </div>
-              <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
                 <label for="floatingPassword">Password</label>
-              </div>
-              <div class="form-check text-start my-3">
-            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Remember me
-            </label>
-          </div>
-          
-              <button class="btn btn-primary w-100 py-2" type="submit">Sign up</button>
-              <div class="d-flex mt-3">
-            <p class="mr-2">Don't have an account yet?</p>
-            <a href="/register/index">Sign up</a>
-          </div>
+            </div>
+
+            <button class="btn btn-primary w-100 py-2" type="submit">Register</button>
             </form>
-          </main>
+        </main>
         </div>
       </div>
       

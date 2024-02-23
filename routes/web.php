@@ -6,6 +6,7 @@ use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,18 +26,19 @@ Route::get('/home', function () {
     return view('home',["title" => "Home"]);
 });
 
-Route::get('/about', function () {
+Route::get('/dashboard/about', function () {
     return view('about',["title" => "About",
     "nama" => "Fatih Abdurrahman",
     "kelas" => "11 PPLG 2",
     "foto" => asset("img/saya.jpg")]);
 });
 
-Route::get('/login/index', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/login/index', [LoginController::class, 'showLoginForm'])->name('login')->middleware('guest');
 Route::post('/login/index', [LoginController::class, 'login']);
 
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/register/index', [RegisterController::class, 'showRegisterForm'])->name('register')->middleware('guest');
+Route::post('/register/store', [RegisterController::Class, 'store'])->name('Register.store');
 
 Route::get('/students/all', [StudentsController::class, 'index']);
 Route::get('/student/detail/{student}', [StudentsController::class, 'show']);
@@ -50,5 +52,15 @@ Route::patch('/student/update/{student}', [StudentsController::class, 'update'])
 Route::delete('/student/delete/{id}', [StudentsController::class, 'destroy']);
 
 Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
-Route::get('/kelas/create', [KelasController::class, 'create'])->name('kelas.create');
 Route::post('/kelas/store', [KelasController::class, 'store'])->name('kelas.store');
+Route::delete('/kelas/delete/{kelas}', [KelasController::class, 'destroy'])->name('kelas.destroy');
+
+Route::get('/dashboard/student', [AdminController::Class, 'index']);
+Route::get('/dashboard/kelas', [AdminController::Class, 'kelas']);
+Route::get('/dashboard/index', [AdminController::class, 'index'])->name('dashboard.index')->middleware('auth');
+Route::get('/dashboard/student', [AdminController::class, 'student'])->name('dashboard.student')->middleware('auth');
+Route::get('/dashboard/detail/{student}', [AdminController::class, 'showdashboard'])->name('dashboard.detail')->middleware('auth');
+Route::get('/dashboard/addsiswa', [StudentsController::class, 'create'])->name('student.create')->middleware('auth');
+Route::get('/dashboard/editsiswa/{student}', [StudentsController::class, 'edit'])->name('student.edit')->middleware('auth');
+Route::delete('/dashboard/kelas/delete/{kelas}', [KelasController::class, 'destroy'])->name('kelas.destroy')->middleware('auth');
+Route::get('/dashboard/addkelas', [KelasController::class, 'create'])->name('kelas.create')->middleware('auth');

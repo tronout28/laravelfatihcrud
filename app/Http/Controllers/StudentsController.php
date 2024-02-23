@@ -26,7 +26,7 @@ class StudentsController extends Controller
 
     public function create()
     {
-      return view('student.add', [
+      return view('dashboard.addsiswa', [
         "title" => "add-student",
         "kelas" => kelas::all()
       ]);
@@ -46,7 +46,7 @@ class StudentsController extends Controller
     // Simpan data ke dalam database
        $hasil = Student::create($validateData);
        if ($hasil) {
-        return redirect('/students/all')->with('success', 'Data mahasiswa berhasil ditambahkan');
+        return redirect('/dashboard/student')->with('success', 'Data mahasiswa berhasil ditambahkan');
        }
     }
 
@@ -55,16 +55,16 @@ class StudentsController extends Controller
         // Temukan data mahasiswa berdasarkan ID
         $student = Student::find($id);
         if (!$student) {
-            return redirect('/students/all')->with('error', 'Data mahasiswa tidak ditemukan');
+            return redirect('/dashboard/student')->with('error', 'Data mahasiswa tidak ditemukan');
         }
         // Hapus data mahasiswa
         $student->delete();
-        return redirect('/students/all')->with('success', 'Data mahasiswa berhasil dihapus');
+        return redirect('/dashboard/student')->with('success', 'Data mahasiswa berhasil dihapus');
     }
     public function edit($id)
     {
         $student = Student::find($id);
-        return view('student.edit', [
+        return view('dashboard.editsiswa', [
             'title' => 'Edit Siswa',
             'student' => $student,
             "kelas" => kelas::all()
@@ -84,6 +84,6 @@ class StudentsController extends Controller
         $student = Student::find($id);
         $student->update($validatedData);
 
-        return redirect('/students/all')->with('success', 'Data mahasiswa berhasil diupdate');
+        return redirect('/dashboard/student')->with('success', 'Data mahasiswa berhasil diupdate');
     }
 }

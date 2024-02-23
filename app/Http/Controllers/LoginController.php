@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Login;
-use App\Http\Requests\StoreLoginRequest;
-use App\Http\Requests\UpdateLoginRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('login.index');
     }
 
     public function login(Request $request)
@@ -23,7 +22,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/dashboard/index');
         }
 
         return back()->withErrors(['email' => 'Invalid credentials']);
@@ -37,6 +36,6 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/students/all');
     }
 }

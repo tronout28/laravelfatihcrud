@@ -16,10 +16,10 @@
         @foreach ($kelas  as $kelass)
         <tr>
             <td>{{$no++}}</td>
-            <td>{{$kelass->nama }}</td>
+            <td>{{$kelass->nama_kelas }}</td>
         </tr>
         @endforeach
     </table>
 </thead>
 {!! $kelas->withQueryString()->links('pagination::bootstrap-5') !!} 
-@endsection 
+@endsection
