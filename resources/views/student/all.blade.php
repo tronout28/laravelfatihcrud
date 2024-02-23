@@ -18,7 +18,7 @@
       <th scope="col">Nama</th>
       <th scope="col">Kelas</th>
       <th scope="col">action</th>
-      <a href="/student/add/" class="btn btn-outline-success">Add</a>
+      <!-- <a href="/student/add/" class="btn btn-outline-success">Add</a> -->
     </tr>
   </thead>
   <tbody>
@@ -37,12 +37,12 @@
       
       <td>
       <a href="/student/detail/{{$student->id}}" class="btn btn-outline-primary">Detail</a>
-      <a href="/student/edit/{{$student->id}}" class="btn btn-outline-warning">Edit</a>
+      <!-- <a href="/student/edit/{{$student->id}}" class="btn btn-outline-warning">Edit</a>
       <form action="/student/delete/{{$student->id}}" method="post" class="d-inline" id="deleteForm_{{ $student->id }}">
           @method('delete')
           @csrf
           <button type="button" class="btn btn-outline-danger" onclick="confirmDelete('{{ $student->id }}')">Delete</button>
-      </form>
+      </form> -->
       </td>
     </tr>
     @endforeach

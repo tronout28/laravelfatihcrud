@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Register;
-use App\Http\Requests\StoreRegisterRequest;
-use App\Http\Requests\UpdateRegisterRequest;
+use App\Models\Student;
+use App\Models\Kelas;
+
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+use App\Models\User;
 
 class RegisterController extends Controller
 {

@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('dashboard.layouts.main')
 
 @section('container')
 <div style="max-width: 600px; margin: auto;">
@@ -31,7 +31,7 @@
             <textarea class="form-control" id="alamat" name="alamat" rows="3" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ced4da; border-radius: 4px;"></textarea>
         </div>
         <button type="submit" class="btn btn-primary" style="display: inline-block; padding: 8px 16px; font-size: 14px; font-weight: bold; text-align: center; text-decoration: none; background-color: #007bff; color: #fff; border: 1px solid #007bff; border-radius: 4px; cursor: pointer;">Simpan</button>
-        <a href="/students/all" class="btn btn-secondary" style="display: inline-block; padding: 8px 16px; font-size: 14px; font-weight: bold; text-align: center; text-decoration: none; background-color: #6c757d; color: #fff; border: 1px solid #6c757d; border-radius: 4px; margin-left: 10px;">Kembali</a>
+        <a href="/dashboard/student" class="btn btn-secondary" style="display: inline-block; padding: 8px 16px; font-size: 14px; font-weight: bold; text-align: center; text-decoration: none; background-color: #6c757d; color: #fff; border: 1px solid #6c757d; border-radius: 4px; margin-left: 10px;">Kembali</a>
     </form>
 </div>
 @endsection

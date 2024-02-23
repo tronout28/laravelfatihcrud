@@ -10,44 +10,42 @@ class KelasController extends Controller
 {   
     public function index()
     {
-        $kelasitem = kelas::paginate(5);
-
+        $kelas = Kelas::paginate(3);
+    
         return view('kelas', [
             'title' => 'Daftar Kelas',
-            'kelas' => $kelasitem,
+            'kelas' => $kelas,
         ]);
     }
-
+    
 
 public function create()
 {
-    $kelasitem = Kelas::all();
+    $kelas = Kelas::all();
 
-    return view('dashboard.createkelas', [
+    return view('dashboard.addkelas', [
         'title' => 'Tambah Data Siswa',
-        'kelas' => $kelasitem,
+        'kelas' => $kelas,
     ]);
 }
 
 public function store(Request $request)
 {
     $validatedData = $request->validate([
-        'nama' => 'required',
+        'nama_kelas' => 'required',
     ]);
 
     Kelas::create($validatedData);
-
     return redirect()->route('dashboard.student')->with('success', 'Data Kelas berhasil ditambahkan');
 }   
 
-public function destroy(Kelas $kelasitem)
+public function destroy(Kelas $kelas)
     {
-      $result = Kelas::destroy($kelasitem->id);
+      $result = Kelas::destroy($kelas->id);
       if($result) {
         return redirect('/dashboard/kelas')->with('success', 'Data Kelas berhasil dihapus');
       }
     }
-
 
 
 }
