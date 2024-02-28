@@ -15,12 +15,6 @@
       </div>
      
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="/home">Home</a>
-        </li> -->
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="/students/all">Students</a>
         </li>
@@ -28,9 +22,22 @@
           <a class="nav-link" href="/kelas">Kelas</a>
         </li>
       </ul>
+      @guest
       <div class="col-md-3 text-end">
         <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">Login</a>
         <a href="{{ route('register') }}" class="btn btn-primary">Sign-up</a>
+        <li class="nav-item dropdown">
+          @else
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Hi, {{ auth()->user()->name }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                          <a class="dropdown-item" href="{{ route('dashboard.index') }}">Dashboard</a>
+                        </li>
+                        </ul>
+                    </li>
       </div>
-
+      @endguest
     </header>

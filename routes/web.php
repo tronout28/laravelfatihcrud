@@ -7,6 +7,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,3 +65,9 @@ Route::get('/dashboard/addsiswa', [StudentsController::class, 'create'])->name('
 Route::get('/dashboard/editsiswa/{student}', [StudentsController::class, 'edit'])->name('student.edit')->middleware('auth');
 Route::delete('/dashboard/kelas/delete/{kelas}', [KelasController::class, 'destroy'])->name('kelas.destroy')->middleware('auth');
 Route::get('/dashboard/addkelas', [KelasController::class, 'create'])->name('kelas.create')->middleware('auth');
+
+Route::group(['middleware' => "Checklogin", "prefix" => "/dashboard"], function(){
+    Route::get('/dashboard', [AdminController::class, 'index']);
+    Route::get('/student', [AdminController::class, 'student']);
+    Route::get('/kelas', [AdminController::class, 'kelas']);
+});

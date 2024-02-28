@@ -23,7 +23,7 @@ class AdminController extends Controller
     }
 
     public function student (){
-        $students = Student::paginate(3); 
+        $students = Student::paginate(5); 
     
         return view ('dashboard.student', [
             'students' => $students, 
