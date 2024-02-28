@@ -13,6 +13,8 @@
   @auth
     <a href="/dashboard/addsiswa" class="btn btn-outline-success">Add</a>
   @endauth
+  
+  {!! $students->withQueryString()->links('pagination::bootstrap-5') !!}
 
   <table class="table">
     <thead>
@@ -58,5 +60,4 @@
         }
     }
 </script>
-  {!! $students->withQueryString()->links('pagination::bootstrap-5') !!}
 @endsection

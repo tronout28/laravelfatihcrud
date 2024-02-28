@@ -10,6 +10,8 @@
 </div>
 @endif
 
+{!! $students->withQueryString()->links('pagination::bootstrap-5') !!}
+
 <table class="table">
   <thead>
     <tr>
@@ -58,4 +60,5 @@
         }
     }
 </script>
+
 @endsection

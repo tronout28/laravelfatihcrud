@@ -10,9 +10,11 @@ class StudentsController extends Controller
 {
     public function index()
     {
+      $students = Student::paginate(10);
+      
         return view('student.all', [
         "title"    => "students", 
-        "students" => Student::all()
+        "students" => $students
       ]);
     }
 
