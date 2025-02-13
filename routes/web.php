@@ -24,14 +24,16 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return view('home',["title" => "Home"]);
+    return view('home', ["title" => "Home"]);
 });
 
 Route::get('/dashboard/about', function () {
-    return view('about',["title" => "About",
-    "nama" => "Fatih Abdurrahman",
-    "kelas" => "11 PPLG 2",
-    "foto" => asset("img/saya.jpg")]);
+    return view('about', [
+        "title" => "About",
+        "nama" => "Fatih Abdurrahman",
+        "kelas" => "11 PPLG 2",
+        "foto" => asset("img/saya.jpg")
+    ]);
 });
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -39,7 +41,7 @@ Route::get('/login/index', [LoginController::class, 'showLoginForm'])->name('log
 Route::post('/login/index', [LoginController::class, 'login']);
 
 Route::get('/register/index', [RegisterController::class, 'showRegisterForm'])->name('register')->middleware('guest');
-Route::post('/register/store', [RegisterController::Class, 'store'])->name('Register.store');
+Route::post('/register/store', [RegisterController::class, 'store'])->name('Register.store');
 
 Route::get('/students/all', [StudentsController::class, 'index']);
 Route::get('/student/detail/{student}', [StudentsController::class, 'show']);
@@ -56,8 +58,8 @@ Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
 Route::post('/kelas/store', [KelasController::class, 'store'])->name('kelas.store');
 Route::delete('/kelas/delete/{kelas}', [KelasController::class, 'destroy'])->name('kelas.destroy');
 
-Route::get('/dashboard/student', [AdminController::Class, 'index']);
-Route::get('/dashboard/kelas', [AdminController::Class, 'kelas']);
+Route::get('/dashboard/student', [AdminController::class, 'index']);
+Route::get('/dashboard/kelas', [AdminController::class, 'kelas']);
 Route::get('/dashboard/index', [AdminController::class, 'index'])->name('dashboard.index')->middleware('auth');
 Route::get('/dashboard/student', [AdminController::class, 'student'])->name('dashboard.student')->middleware('auth');
 Route::get('/dashboard/detail/{student}', [AdminController::class, 'showdashboard'])->name('dashboard.detail')->middleware('auth');
@@ -66,7 +68,7 @@ Route::get('/dashboard/editsiswa/{student}', [StudentsController::class, 'edit']
 Route::delete('/dashboard/kelas/delete/{kelas}', [KelasController::class, 'destroy'])->name('kelas.destroy')->middleware('auth');
 Route::get('/dashboard/addkelas', [KelasController::class, 'create'])->name('kelas.create')->middleware('auth');
 
-Route::group(['middleware' => "Checklogin", "prefix" => "/dashboard"], function(){
+Route::group(['middleware' => "Checklogin", "prefix" => "/dashboard"], function () {
     Route::get('/dashboard', [AdminController::class, 'index']);
     Route::get('/student', [AdminController::class, 'student']);
     Route::get('/kelas', [AdminController::class, 'kelas']);
